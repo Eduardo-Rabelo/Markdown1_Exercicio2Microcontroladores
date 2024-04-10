@@ -131,15 +131,205 @@ void loop() {
 
 Este [exercício](https://wokwi.com/projects/394449591727510529) consiste em um aprimoramento do exercício anterior. A diferença, no circuito é o acrescimo de 2 botões, o *top buttom* e o *bottom button* . Ambos tem sua entrada **1.r** ligada ao *Ground*. Suas entradas **2.l** estão ligadas, respectivamente aos pinos 10 e 11 do arduino UNO.  
 
-![alt text](Markdown/Circuito4.png)
+![alt text](Circuito4.png)
 
 Quanto ao código, além das variáveis a a g,são criadas as variáveis *upButton* e *dowButton*, que representão os pinos 10 e 11, respectivamente. Essas variáveis são setadas como inputs do tipo **PULL UP**. Além disso, são criadas funções para fazer o display mostrar todos os números de 1 a 9. Também são criadas as variáveis *currentNumber*,*maxNumber* e *minNumber*, que são usadas para se programar o circuito de modo que o botão de cima, caso pressionado, incremente o número mostrado, e o botão de baixo o decremente.
 
-![codigo4_variaveis](Markdown/variaveis4.png)
-
 Na função *loop()*, se o botão de cima for pressionado, o sinal lógico de *upButton* é lido como zero, e o valor de *currentNumber* é incrementado. Caso este valor seja maior que 9, ele passa a ser 9; caso o valor seja menor  que zero, ele volta a ser 0. O delay no código é pr evitar que uma pressionada rápida no botão leve a mudnças rápidas demais para o olho humano acompanhar.
 
-![codigo4_loop](Markdown/loop4.png)
+```cpp
+int a=0,b=1,c=2,d=3,e=4,f=5,g=6,upButton=10,dowButton=11;
+
+int currentNumber = 0; // Start with number 1
+const int maxNumber = 9; // Maximum number to display
+const int minNumber = 0; // Minimum number to display
+
+void setup() {
+  pinMode(a , OUTPUT);
+  pinMode(b , OUTPUT);
+  pinMode(c , OUTPUT);
+  pinMode(d , OUTPUT);
+  pinMode(e , OUTPUT);
+  pinMode(f , OUTPUT);
+  pinMode(g , OUTPUT);
+  pinMode(upButton, INPUT_PULLUP);
+  pinMode(dowButton, INPUT_PULLUP);
+
+}
+
+void zero(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, LOW);
+  digitalWrite(f, LOW);
+  digitalWrite(g, HIGH);
+}
+
+void one(){
+  digitalWrite(a, HIGH);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, HIGH);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, HIGH);
+  digitalWrite(g, HIGH);
+}
+
+void two(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, HIGH);
+  digitalWrite(d, LOW);
+  digitalWrite(e, LOW);
+  digitalWrite(f, HIGH);
+  digitalWrite(g, LOW);
+}
+
+void three(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, HIGH);
+  digitalWrite(g, LOW);
+}
+
+void four(){
+  digitalWrite(a, HIGH);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, HIGH);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, LOW);
+  digitalWrite(g, LOW);
+}
+
+void five(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, HIGH);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, LOW);
+  digitalWrite(g, LOW);
+}
+
+void six(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, HIGH);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, LOW);
+  digitalWrite(f, LOW);
+  digitalWrite(g, LOW);
+}
+
+void seven(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, HIGH);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, HIGH);
+  digitalWrite(g, HIGH);
+}
+
+void eight(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, LOW);
+  digitalWrite(f, LOW);
+  digitalWrite(g, LOW);
+}
+
+void nine(){
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, HIGH);
+  digitalWrite(f, LOW);
+  digitalWrite(g, LOW);
+}
+
+void loop() {
+  
+  if (!digitalRead(upButton)) { 
+    currentNumber++;
+    if (currentNumber > maxNumber) {
+      currentNumber = maxNumber;
+    }
+    delay(250); 
+  }
+
+  if (!digitalRead(dowButton)) { 
+    currentNumber--;
+    if (currentNumber < minNumber) {
+      currentNumber = minNumber;
+    }
+    delay(250); 
+  }
+
+  
+  switch (currentNumber) {
+
+    case 0:
+      zero();
+    break;
+
+    case 1:
+      one();
+    break;
+
+    case 2:
+      two();
+    break;
+
+    case 3:
+      three();
+    break;
+
+    case 4:
+      four();
+    break;
+    
+    case 5:
+      five();
+    break;
+
+    case 6:
+      six();
+    break;
+    
+    case 7:
+      seven();
+    break;
+
+    case 8:
+      eight();
+    break;
+
+    case 9:
+      nine();
+    break;
+
+    default:
+      
+    break;
+  }
+
+
+
+}
+
+```
+
+
 
 
 # Códigos
