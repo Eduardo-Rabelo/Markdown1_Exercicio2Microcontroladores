@@ -1,6 +1,7 @@
 ---
 title: "Relatório da atividade 2 da disciplina de Microcprocessadores e microprocessadores."
 author: "Eduardo Rabelo Guimarães"
+coauthor: "Daniel Couto Fonseca"
 ---
 # Relatório da Atividade 2
 
